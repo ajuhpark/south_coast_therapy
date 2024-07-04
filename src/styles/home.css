@@ -1,0 +1,15 @@
+/* starting state */
+.home-once{
+  opacity: 0;
+}
+
+/* active state */
+.home-once-active {
+  transition: opacity 1s linear 0.3s;
+}
+
+/* ending state */
+.home-once-to {
+  opacity: 1;
+}
+

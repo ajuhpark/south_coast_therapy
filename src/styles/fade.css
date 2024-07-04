@@ -1,0 +1,34 @@
+/* Fade out container */
+
+/* starting state */
+.fade-leave{
+  opacity: 1;
+}
+
+/* active state */
+.fade-leave-active {
+  transition: opacity .5s linear;
+}
+
+/* ending state */
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Fade in container (when we enter new page) */
+
+/* starting state */
+.fade-enter{
+  opacity: 0;
+}
+
+/* active state */
+.fade-enter-active {
+  transition: opacity .5s linear;
+}
+
+/* ending state */
+.fade-enter-to {
+  opacity: 1;
+}
+

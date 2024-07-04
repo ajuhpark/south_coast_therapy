@@ -1,0 +1,34 @@
+/* clip out container */
+
+/* starting state */
+.clip-leave{
+  opacity: 1;
+}
+
+/* active state */
+.clip-leave-active {
+  transition: opacity .5s linear;
+}
+
+/* ending state */
+.clip-leave-to {
+  opacity: 0;
+}
+
+/* clip in container (when we enter new page) */
+
+/* starting state */
+.clip-enter{
+  opacity: 0;
+}
+
+/* active state */
+.clip-enter-active {
+  transition: opacity .5s linear;
+}
+
+/* ending state */
+.clip-enter-to {
+  opacity: 1;
+}
+
