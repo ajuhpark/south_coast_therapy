@@ -1,8 +1,10 @@
-// 1.vite.config.js
-const path = require('path')
-const { defineConfig } = require('vite')
+import path from 'path';
+import { defineConfig } from 'vite';
 
-module.exports = defineConfig({
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
+
+export default defineConfig({
   server: {
     host: 'localhost',
     cors: '*',
@@ -13,17 +15,8 @@ module.exports = defineConfig({
   },
 
   build: {
-    // this building a library is from this website: https://andrewwalpole.com/blog/use-vite-for-javascript-libraries/
-    /*
-    lib: {
-      entry: path.resolve(__dirname, 'lib/main.js'),
-      name: 'webflow_js_library',
-      fileName: (format) => `webflow_js_library.${format}.js`
-    },
-    */
-    // I put this back from the original webflow + vite.js file.
     rollupOptions: {
-      input: 'lib/homepage.js',
+      input: path.resolve(__dirname, 'lib/homepage.js'),
       output: {
         format: 'umd',
         entryFileNames: 'homepage.js',
@@ -37,36 +30,3 @@ module.exports = defineConfig({
     },
   }
 });
-
-/* 
-// original vite.config.js code below
-// vite.config.js
-export default defineConfig({
-  plugins: [eslintPlugin({ cache: false })],
-  server: {
-    host: 'localhost',
-    cors: '*',
-    hmr: {
-      host: 'localhost',
-      protocol: 'ws',
-    },
-  },
-  build: {
-    minify: true,
-    manifest: true,
-    rollupOptions: {
-      input: './src/main.js',
-      output: {
-        format: 'umd',
-        entryFileNames: 'main.js',
-        esModule: false,
-        compact: true,
-        globals: {
-          jquery: '$',
-        },
-      },
-      external: ['jquery'],
-    },
-  },
-})
-*/
