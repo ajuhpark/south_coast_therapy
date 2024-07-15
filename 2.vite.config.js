@@ -23,10 +23,10 @@ module.exports = defineConfig({
     */
     // I put this back from the original webflow + vite.js file.
     rollupOptions: {
-      input: 'lib/cs_website_builder_tools.js',
+      input: 'lib/example_1.js',
       output: {
         format: 'umd',
-        entryFileNames: 'cs_website_builder_tools.js',
+        entryFileNames: 'example_1.js',
         esModule: false,
         compact: true,
         globals: {
