@@ -145,3 +145,5 @@ for some reason other case_study.js file didn't build. 1
 --
 
 070624 removing flip to see if that's issue
+
+071724 for some reason it didn't push 3.config.js last time. 
