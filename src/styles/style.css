@@ -60,3 +60,36 @@
 .gs-dev-tools {
   z-index: 4;
 }
+
+
+/* buttonHover styles */
+
+.cursor,
+.follow {
+    position: absolute;
+    pointer-events: none;
+    width: 0.4rem;
+    height: 0.4rem;
+    transform: translate(-50%, -50%);
+}
+
+.cursor {
+    background-color: white;
+    border-radius: 100%;
+}
+
+.follow {
+    padding: 2rem;
+    border: 0.1rem solid white;
+    transition: all .3s ease-out;
+    border-radius: 100%;
+}
+
+.follow.on-focus {
+    /* this  below works in codepen but not in here. */
+    /* transform: translate(.55rem, 0.55rem); */
+    transform: translate(0rem, 0rem);
+    border: 0.1rem solid white;
+    border-radius: 0%;
+    padding: 0.46rem;
+}
