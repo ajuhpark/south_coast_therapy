@@ -95,3 +95,13 @@
 }
 
 
+/* Constance Souville CSS */
+
+@media (max-width: 900px) {
+  .constance_h1 {
+    font-size: 2em;
+  }
+  .constance_p {
+    font-size: 8px;
+  }
+}
