@@ -8,6 +8,8 @@ import { gsap } from 'gsap'
 gsap.registerPlugin(GSDevTools)
 
 
+const constance_tl = gsap.timeline();
+
 function example_6() {
   console.log('example_6.js is working')
 
@@ -17,9 +19,8 @@ function example_6() {
 
     gsap.from("html", {duration: 0, autoAlpha:0})
 
-      const tl = gsap.timeline();
 
-      tl.from(".constance_p", 1.8, {
+      constance_tl.from(".constance_p", 1.8, {
         opacity: 0,
         y: -100,
         ease: "power4.out",
@@ -29,7 +30,7 @@ function example_6() {
         },
       });
 
-      tl.from(
+      constance_tl.from(
         ".hr",
         1.8,
         {
@@ -43,7 +44,7 @@ function example_6() {
         "-=1.5"
       );
 
-      tl.from(
+      constance_tl.from(
         ".constance_reveal div",
         1.8,
         {
@@ -56,7 +57,7 @@ function example_6() {
         "-=2"
       );
 
-      tl.from(
+      constance_tl.from(
         ".constance_nav-item",
         1.8,
         {
