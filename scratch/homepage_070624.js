@@ -10,7 +10,7 @@ import { gsap } from 'gsap'
 
 // import feature from './features/feature'
 import case_study from './case_study'
-import cs_website_builder_tools from './cs_website_builder_tools'
+import cs_website_builder_tools from '../lib/cs_website_builder_tools'
 
 gsap.registerPlugin(Flip)
 console.log(Flip)
