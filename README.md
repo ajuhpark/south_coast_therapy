@@ -151,8 +151,12 @@ for some reason other case_study.js file didn't build. 1
 --
 
 073024
-    "build:part2": "yarn build-script-4 && yarn build-script-5 && yarn build-script-6",
-    "build:part3": "yarn build-script-7 && yarn build-script-8 && yarn build-script-9",
+
+    "build:part1": "yarn build-script-1 & yarn build-script-2 & yarn build-script-3",
+    "build:part2": "yarn build-script-4 & yarn build-script-5 & yarn build-script-6",
+    "build:part3": "yarn build-script-7 & yarn build-script-8 & yarn build-script-9",
     "build:part4": "yarn build-script-10",
-    "build": "yarn build:part1 && yarn build:part2 && yarn build:part3 && yarn build:part4",
-    
+    "build": "yarn build:part1 & yarn build:part2 & yarn build:part3 & yarn build:part4",
+
+    "build": "yarn build-script-1 & yarn build-script-2 & yarn build-script-3 & yarn build-script-4 & yarn build-script-5 & yarn build-script-6 & yarn build-script-7 & yarn build-script-8 & yarn build-script-9 & yarn build-script-10",
+

@@ -111,3 +111,16 @@
     font-size: 8px;
   }
 }
+
+/* Camille Mormal CSS */
+
+.mormal_item img {
+  /* Optional for Chrome */
+  /* image-rendering: -webkit-optimize-contrast;  */
+  /* Firefox */
+  /* image-rendering: crisp-edges;  */
+  /* Other browsers */
+  /* image-rendering: pixelated;  */
+  /* width: 100%; */
+  /* height: auto; */
+}

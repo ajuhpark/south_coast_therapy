@@ -1,8 +1,7 @@
 import '../src/styles/style.css'
 import { gsap } from 'gsap'
-import example_7 from './example_7'
-// example_7()
-
+import example_7 from '../lib/example_7'
+example_7()
 // import { SplitText } from 'gsap/SplitText'
 
 /** Camille Mormal Tutorail */
@@ -20,87 +19,74 @@ function example_8() {
 
     console.log('example_8 init function is working')
 
+    gsap.from("html", {duration: 0, autoAlpha:0})
+"constance_tl<+=1"
     mormal_tl
       .from("html", {duration: 0, autoAlpha:0}, 'mormal_tl')
-
-      // I had to get the original container to be huge to get images good quality. Here, I'm setting the the container back to the 100% width and height. 
-      .set(".mormal_container", {
-        width: "100%",
-        height: "100%",
-        duration: 0,
-      }, "mormal_tl+=0") // Starts at the beginning
 
       .to(".mormal_col", {
         top: "0",
         duration: 3,
         ease: "power4.inOut"
-      }, "mormal_tl+=0") // Starts at the beginning
-
+      }, "mormal_tl<")
+      
+      //css for this element below is in css in webflow.
       .to(".mormal_c-1 .mormal_item", {
         top: "0",
         stagger: .25,
         duration: 3,
         ease: "power4.inOut"
-      }, "mormal_tl+=0") // Starts at the beginning
+      // so this is saying it's happening 2s before the end of the timeline.
+      // }, "-=2") 
+      }, "-=2") 
 
-      // 2 and 4 have negative stagger because they're going opposite direction of elements.
       .to(".mormal_c-2 .mormal_item", {
         top: "0",
         stagger: -0.25,
         duration: 3,
         ease: "power4.inOut"
-      }, "mormal_tl+=0") // Starts at the beginning
+      // so this is saying it's happening 4s before the end of the timeline.
+      }, "-=4")
 
       .to(".mormal_c-3 .mormal_item", {
         top: "0",
         stagger: 0.25,
         duration: 3,
         ease: "power4.inOut"
-      }, "mormal_tl+=0") // Starts at the beginning
+      }, "-=4")
 
       .to(".mormal_c-4 .mormal_item", {
         top: "0",
         stagger: -0.25,
         duration: 3,
         ease: "power4.inOut"
-      }, "mormal_tl+=0") // Starts at the beginning
+      }, "-=4")
 
       .to(".mormal_c-5 .mormal_item", {
         top: "0",
         stagger: 0.25,
         duration: 3,
         ease: "power4.inOut"
-      }, "mormal_tl+=0") // Starts at the beginning
+      }, "-=4")
 
       .to(".mormal_container", {
         scale: 5.5,
         duration: 4,
         ease: "power4.inOut"
-      }, "mormal_tl+=3") // Starts at 3 seconds
+      }, "-=2")
 
-      /** Another way to scale the container
-      .to(".mormal_container", {
-        width: "600vw",
-        height: "600vh",
-        bottom: "-250%",
-        left: "-250%",
-        duration: 4,
-        ease: "power4.inOut"
-      }, "mormal_tl+=3") // Starts at 3 seconds
-      */
       .to(".mormal_nav-item_text, .mormal_title_text, .mormal_slide-num_text, .mormal_img.preview", {
         top: 0,
-        stagger: 0.2,
+        stagger: 0.075,
         duration: 1,
         ease: "power3.out",
-      }, "mormal_tl+=5.5") // Starts at 5.5 seconds
+      }, "-=1.5")
 
       .to(".mormal_ion-icon, .mormal_ion-icon", {
         scale: 1,
         stagger: 0.05,
         ease: "power3.out",
-      }, "mormal_tl+=6.5") // Starts at 6.5 seconds
-
+      }, "-=1")
 
 
       GSDevTools.create({})
@@ -116,6 +102,5 @@ function example_8() {
 if (document.body.classList.contains('example_8')) {
   example_8();
 }
-
 
 export default example_8
