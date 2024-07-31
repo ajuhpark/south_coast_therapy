@@ -61,6 +61,12 @@
   z-index: 4;
 }
 
+/* Distort Content */
+.distort_section {
+  transition: transform 0.25s;
+  will-change: transform;
+}
+
 
 /* buttonHover styles */
 
