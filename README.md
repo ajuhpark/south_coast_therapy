@@ -147,3 +147,12 @@ for some reason other case_study.js file didn't build. 1
 070624 removing flip to see if that's issue
 
 071724 for some reason it didn't push 3.config.js last time. 
+
+--
+
+073024
+    "build:part2": "yarn build-script-4 && yarn build-script-5 && yarn build-script-6",
+    "build:part3": "yarn build-script-7 && yarn build-script-8 && yarn build-script-9",
+    "build:part4": "yarn build-script-10",
+    "build": "yarn build:part1 && yarn build:part2 && yarn build:part3 && yarn build:part4",
+    
