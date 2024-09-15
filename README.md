@@ -160,3 +160,23 @@ for some reason other case_study.js file didn't build. 1
 
     "build": "yarn build-script-1 & yarn build-script-2 & yarn build-script-3 & yarn build-script-4 & yarn build-script-5 & yarn build-script-6 & yarn build-script-7 & yarn build-script-8 & yarn build-script-9 & yarn build-script-10",
 
+--
+
+
+    "build:part1": "yarn build-script-1 & yarn build-script-2 & yarn build-script-3",
+    "build:part2": "yarn build-script-4 & yarn build-script-5 & yarn build-script-6",
+    "build:part3": "yarn build-script-7 & yarn build-script-8 & yarn build-script-9",
+    "build:part4": "yarn build-script-10 & yarn build-script-11",
+    "build": "yarn build:part1 & yarn build:part2 & yarn build:part3 & yarn build:part4",
+    "build-script-1": "vite build --config 1.vite.config.js",
+    "build-script-2": "vite build --config 2.vite.config.js",
+    "build-script-3": "vite build --config 3.vite.config.js",
+    "build-script-4": "vite build --config 4.vite.config.js",
+    "build-script-5": "vite build --config 5.vite.config.js",
+    "build-script-6": "vite build --config 6.vite.config.js",
+    "build-script-7": "vite build --config 7.vite.config.js",
+    "build-script-8": "vite build --config 8.vite.config.js",
+    "build-script-9": "vite build --config 9.vite.config.js",
+    "build-script-10": "vite build --config 10.vite.config.js",
+    "build-script-11": "vite build --config 11.vite.config.js",
+    
