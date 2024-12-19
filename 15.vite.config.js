@@ -1,4 +1,4 @@
-// 13.vite.config.js
+// 15.vite.config.js
 const path = require('path')
 const { defineConfig } = require('vite')
 
@@ -23,10 +23,10 @@ module.exports = defineConfig({
     */
     // I put this back from the original webflow + vite.js file.
     rollupOptions: {
-      input: 'lib/bm_test.js',
+      input: 'lib/example_11_color_toggle.js',
       output: {
         format: 'umd',
-        entryFileNames: 'bm_test.js',
+        entryFileNames: 'example_11_color_toggle.js',
         esModule: false,
         compact: true,
         globals: {
