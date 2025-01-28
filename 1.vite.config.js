@@ -25,8 +25,9 @@ module.exports = defineConfig({
     rollupOptions: {
       input: 'lib/homepage.js',
       output: {
-        format: 'umd',
-        entryFileNames: 'homepage.js',
+        dir: 'dist/homepage', // Output directory unique to this build
+        format: 'es',
+        entryFileNames: '[name].js',
         esModule: false,
         compact: true,
         globals: {
@@ -35,8 +36,8 @@ module.exports = defineConfig({
       },
       external: ['jquery'],
     },
-  }
-});
+  },
+})
 
 /* 
 // original vite.config.js code below

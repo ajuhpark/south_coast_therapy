@@ -3,7 +3,6 @@ const path = require('path')
 const { defineConfig } = require('vite')
 
 module.exports = defineConfig({
-
   build: {
     server: {
       host: 'localhost',
@@ -25,8 +24,9 @@ module.exports = defineConfig({
     rollupOptions: {
       input: 'lib/bm_test_1.js',
       output: {
-        format: 'umd',
-        entryFileNames: 'bm_test_1.js',
+        dir: 'dist/bm_test_1', // Output directory unique to this build
+        format: 'es',
+        entryFileNames: '[name].js',
         esModule: false,
         compact: true,
         globals: {
@@ -35,5 +35,5 @@ module.exports = defineConfig({
       },
       external: ['jquery'],
     },
-  }
-});
+  },
+})
