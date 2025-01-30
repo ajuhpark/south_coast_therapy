@@ -1,8 +1,7 @@
-@import "home.css";
-@import "fade.css";
-@import "clip.css";
-@import "slide.css";
-
+@import 'home.css';
+@import 'fade.css';
+@import 'clip.css';
+@import 'slide.css';
 
 .js-badge {
   position: fixed;
@@ -42,7 +41,6 @@
   --easing: cubic-bezier(0.5, 0.7, 0.4, 1);
 }
 
-
 .transition {
   position: fixed;
   width: 100%;
@@ -67,39 +65,37 @@
   will-change: transform;
 }
 
-
 /* buttonHover styles */
 
 .cursor,
 .follow {
-    position: absolute;
-    pointer-events: none;
-    width: 0.4rem;
-    height: 0.4rem;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  pointer-events: none;
+  width: 0.4rem;
+  height: 0.4rem;
+  transform: translate(-50%, -50%);
 }
 
 .cursor {
-    background-color: white;
-    border-radius: 100%;
+  background-color: white;
+  border-radius: 100%;
 }
 
 .follow {
-    padding: 2rem;
-    border: 0.1rem solid white;
-    transition: all .3s ease-out;
-    border-radius: 100%;
+  padding: 2rem;
+  border: 0.1rem solid white;
+  transition: all 0.3s ease-out;
+  border-radius: 100%;
 }
 
 .follow.on-focus {
-    /* this  below works in codepen but not in here. */
-    /* transform: translate(.55rem, 0.55rem); */
-    transform: translate(0rem, 0rem);
-    border: 0.1rem solid white;
-    border-radius: 0%;
-    padding: 0.46rem;
+  /* this  below works in codepen but not in here. */
+  /* transform: translate(.55rem, 0.55rem); */
+  transform: translate(0rem, 0rem);
+  border: 0.1rem solid white;
+  border-radius: 0%;
+  padding: 0.46rem;
 }
-
 
 /* Constance Souville CSS */
 
@@ -115,13 +111,15 @@
 /* Camille Mormal CSS */
 
 .mormal_img {
-  image-rendering: auto;      /* Default scaling algorithm */
+  image-rendering: auto; /* Default scaling algorithm */
   image-rendering: crisp-edges; /* Prefer crisp edges (may turn off anti-aliasing) */
   image-rendering: pixelated; /* Renders image with nearest-neighbor scaling, no anti-aliasing */
 }
 
 .mormal_img_copy {
-  image-rendering: auto;      /* Default scaling algorithm */
+  image-rendering: auto; /* Default scaling algorithm */
   image-rendering: crisp-edges; /* Prefer crisp edges (may turn off anti-aliasing) */
   image-rendering: pixelated; /* Renders image with nearest-neighbor scaling, no anti-aliasing */
 }
+
+/* gsap pin example_12.js */
