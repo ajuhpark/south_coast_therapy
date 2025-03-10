@@ -1,4 +1,4 @@
-// 17.vite.config.js
+// 18.vite.config.js
 const path = require('path')
 const { defineConfig } = require('vite')
 
@@ -22,9 +22,9 @@ module.exports = defineConfig({
     */
     // I put this back from the original webflow + vite.js file.
     rollupOptions: {
-      input: 'lib/example_13.js',
+      input: 'lib/example_14.js',
       output: {
-        dir: 'dist/example_13', // Output directory unique to this build
+        dir: 'dist/example_14', // Output directory unique to this build
         format: 'es',
         entryFileNames: '[name].js',
         esModule: false,
