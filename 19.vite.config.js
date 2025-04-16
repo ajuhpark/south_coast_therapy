@@ -13,9 +13,9 @@ module.exports = defineConfig({
   },
   build: {
     rollupOptions: {
-      input: 'lib/example_15.js',
+      input: 'lib/small_joys_home.js',
       output: {
-        dir: 'dist/example_15',
+        dir: 'dist/small_joys_home',
         format: 'es',
         entryFileNames: '[name].js',
         esModule: false,
