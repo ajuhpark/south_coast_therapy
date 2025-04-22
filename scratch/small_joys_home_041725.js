@@ -3,10 +3,10 @@
 import "../src/styles/style.css";
 // import { gsap } from "gsap";
 // import { GSDevTools } from "gsap/GSDevTools"; 
-import sj_menu from './sj_menu.js'
+import sj_menu from '../lib/sj_menu.js'
 sj_menu()
 
-import colorModeToggle from './color_mode_toggle.js'
+import colorModeToggle from '../lib/color_mode_toggle.js'
 
 // Register ALL plugins
 // gsap.registerPlugin(ScrollTrigger, GSDevTools); 

@@ -1,7 +1,7 @@
 /** SJ Home 041925
  * Updated version with a single FLIP animation for the icon group
- * Fixed reset functionality when scrolling back up
- */
+ * But it doesn't work when going back down.
+*/
 import "../src/styles/style.css";
 // import { gsap } from "gsap";
 // import { GSDevTools } from "gsap/GSDevTools"; 
@@ -30,9 +30,6 @@ function small_joys_home() {
     buttonAppear: null
   };
 
-  // Flag to track animation state
-  let animationActive = true;
-
   // Initialize everything
   function init() {
     console.log("small_joys_home init function is working");
@@ -40,7 +37,6 @@ function small_joys_home() {
     initGridAnimation();
     initFlipIconAnimation();
     initLogoToNavAnimation();
-    initButtonAnimation();
   }
   
   function initDevTools() {
@@ -58,7 +54,7 @@ function small_joys_home() {
     let sj_banner_1_icon_group_1 = document.querySelector("#sj_banner_icon_group");
     let sj_target_container_icon_group_contact_section = document.querySelector("#sj_target_container_icon_group_contact_section");
     
-    // Store original parent if not already stored
+    // Store original parent
     if (!originalElements.has(sj_banner_1_icon_group_1)) {
       const origin = document.querySelector(".sj_banner_1_icon_group_origin");
       if (origin) {
@@ -72,17 +68,8 @@ function small_joys_home() {
     // Create a timeline for the single FLIP animation
     let tl_flip_icon_group = gsap.timeline();
     
-    // Don't add animation if already in target container
-    if (sj_banner_1_icon_group_1.parentElement === sj_target_container_icon_group_contact_section) {
-      console.log("Icon already in target container, skipping FLIP setup");
-      return;
-    }
-    
     // Capture initial state before any changes
     let initialState = Flip.getState(sj_banner_1_icon_group_1);
-    
-    // Create a clone to keep in the original position
-    const originalParent = originalElements.get(sj_banner_1_icon_group_1);
     
     // Move to target container in contact section
     sj_target_container_icon_group_contact_section.appendChild(sj_banner_1_icon_group_1);
@@ -98,27 +85,21 @@ function small_joys_home() {
     
     // Create ScrollTrigger for the FLIP animation
     scrollTriggers.flipIconGroup = ScrollTrigger.create({
-      trigger: document.querySelector(".small_joys_home") || document.body, // Using the body class as trigger or fallback to body
+      trigger: document.querySelector(".small_joys_home"), // Using the body class as trigger
       start: "top 0%",
       end: "bottom 100%",
-      // markers: true,
+      markers: true,
       ease: "power1.in",
       animation: tl_flip_icon_group,
       scrub: true,
-      onUpdate: (self) => {
-        // Track progress for debugging
-        // console.log("Progress:", self.progress.toFixed(2));
-      },
       onEnter: () => {
         console.log("ENTER flip icon animation");
-        animationActive = true;
       },
       onLeave: () => {
         console.log("LEAVE flip icon animation");
       },
       onEnterBack: () => {
         console.log("ENTER BACK flip icon animation");
-        animationActive = true;
       },
       onLeaveBack: () => {
         console.log("LEAVE BACK flip icon animation");
@@ -127,30 +108,13 @@ function small_joys_home() {
         if (sj_banner_1_icon_group_1.parentElement !== originalElements.get(sj_banner_1_icon_group_1)) {
           const originalParent = originalElements.get(sj_banner_1_icon_group_1);
           if (originalParent) {
-            console.log("Returning icon to original parent");
-            animationActive = false;
-            
             const currentState = Flip.getState(sj_banner_1_icon_group_1);
             originalParent.appendChild(sj_banner_1_icon_group_1);
             
             Flip.from(currentState, {
               duration: 0.5,
               ease: "power1.out",
-              absolute: true,
-              onComplete: () => {
-                // Kill current ScrollTrigger to avoid conflicts
-                if (scrollTriggers.flipIconGroup) {
-                  scrollTriggers.flipIconGroup.kill();
-                  scrollTriggers.flipIconGroup = null;
-                }
-                
-                // Re-initialize the animation with a slight delay
-                setTimeout(() => {
-                  if (!scrollTriggers.flipIconGroup) {
-                    initFlipIconAnimation();
-                  }
-                }, 100);
-              }
+              absolute: true
             });
           }
         }
@@ -196,28 +160,8 @@ function small_joys_home() {
     });
   }
 
-  function initButtonAnimation() {
-    // Get elements
-    let sj_1_button_1_sticky_nav = document.querySelector("#sj_1_button_1_sticky_nav");
-    let sj_grid_container_nav_1_sticky_nav = document.querySelector(".sj_grid_container.nav_1.sticky_nav");
-    
-    // Create tween
-    let tween_sj_1_button_1_sticky_nav = gsap.from(sj_1_button_1_sticky_nav, {
-      opacity: "0",
-      duration: 1
-    });
 
-    // Create ScrollTrigger
-    scrollTriggers.buttonAppear = ScrollTrigger.create({
-      id: "buttonAppearAnimation",
-      trigger: sj_grid_container_nav_1_sticky_nav,
-      start: "top 0%",
-      end: "top 100px",
-      toggleActions: "play none none reverse",
-      animation: tween_sj_1_button_1_sticky_nav
-    });
-  }
-
+  
   // Kill only specific animations and reset specific elements
   function killFlipIconAnimation() {
     // Kill ScrollTrigger
@@ -250,7 +194,6 @@ function small_joys_home() {
   // Make functions available globally for debugging
   window.killFlipIconAnimation = killFlipIconAnimation;
   window.resetFlipIconOnly = resetFlipIconOnly;
-  window.reInitFlipAnimation = initFlipIconAnimation; // Add for manual re-init if needed
 
   // Debounce function for resize events
   function debounce(func) {
@@ -271,21 +214,6 @@ function small_joys_home() {
   window.addEventListener("load", function (event) {
     init();
   });
-
-  // Additional scroll event listener to help with edge cases
-  window.addEventListener("scroll", debounce(function() {
-    // Check if we're at the top of the page and animation should be active
-    if (window.scrollY <= 10 && !animationActive) {
-      console.log("Near top of page, checking if animation needs reset");
-      const iconGroup = document.querySelector("#sj_banner_icon_group");
-      const originalParent = originalElements.get(iconGroup);
-      
-      if (iconGroup && originalParent && iconGroup.parentElement === originalParent && !scrollTriggers.flipIconGroup) {
-        console.log("Reinitializing flip animation");
-        initFlipIconAnimation();
-      }
-    }
-  }));
 }
 
 // Only run the code if we're on the correct page

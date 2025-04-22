@@ -1,7 +1,7 @@
-/** SJ Home 041925
- * Updated version with a single FLIP animation for the icon group
- * Fixed reset functionality when scrolling back up
- */
+/** SJ Home 042225
+ * This has the correct animation but doesn't have the responsiveness set up correctly.  
+ * 
+*/
 import "../src/styles/style.css";
 // import { gsap } from "gsap";
 // import { GSDevTools } from "gsap/GSDevTools"; 
@@ -25,13 +25,10 @@ function small_joys_home() {
   
   // Store ScrollTrigger instances
   let scrollTriggers = {
-    flipIconGroup: null,
+    initFlipIconAnimation: null,
     logoToNav: null,
     buttonAppear: null
   };
-
-  // Flag to track animation state
-  let animationActive = true;
 
   // Initialize everything
   function init() {
@@ -55,107 +52,73 @@ function small_joys_home() {
 
   function initFlipIconAnimation() {
     // Get elements
-    let sj_banner_1_icon_group_1 = document.querySelector("#sj_banner_icon_group");
+    let sj_banner_1_icon_group_icon_1 = document.querySelector("#sj_banner_icon_group");
+    let sj_target_container_icon_group_process_section = document.querySelector("#sj_target_container_icon_group_process_section");
     let sj_target_container_icon_group_contact_section = document.querySelector("#sj_target_container_icon_group_contact_section");
-    
-    // Store original parent if not already stored
-    if (!originalElements.has(sj_banner_1_icon_group_1)) {
-      const origin = document.querySelector(".sj_banner_1_icon_group_origin");
-      if (origin) {
-        originalElements.set(sj_banner_1_icon_group_1, origin);
-      }
-    }
-    
-    console.log("sj_banner_1_icon_group_1.parentElement:", sj_banner_1_icon_group_1.parentElement);
-    console.log("sj_banner_1_icon_group_1:", sj_banner_1_icon_group_1);
+    // let ap_grid_container_sj_process_section_1 = document.querySelector(".ap_grid_container.sj_process_section_1");
+    let ap_grid_container_sj_contact_section_1 = document.querySelector(".ap_grid_container.sj_contact_section_1");
+    let sj_target_container_icon_group = document.querySelector("#sj_target_container_icon_group_contact_section")
 
-    // Create a timeline for the single FLIP animation
+    let small_joys_home = document.querySelector(".small_joys_home");
+
+    // Store original parent
+    if (!originalElements.has(sj_banner_1_icon_group_icon_1)) {
+      // originalElements.set(sj_banner_1_icon_group_1, sj_banner_1_icon_group_1.parentElement);
+    const origin = document.querySelector(".sj_banner_1_icon_group_origin");
+    if (origin) {
+      originalElements.set(sj_banner_1_icon_group_icon_1, origin);
+}
+
+    }
+    console.log("sj_banner_1_icon_group_1.parentElement:", sj_banner_1_icon_group_icon_1.parentElement)
+    console.log("sj_banner_1_icon_group_1:", sj_banner_1_icon_group_icon_1);
+
+
+    // Store original parent for reset purposes if not already stored
+    if (!originalElements.has(sj_banner_1_icon_group_icon_1)) {
+      originalElements.set(sj_banner_1_icon_group_icon_1, sj_banner_1_icon_group_icon_1.parentElement);
+    }
+
+    // 2. Get the initial state BEFORE any DOM changes
+    // const state = Flip.getState(sj_banner_1_header_text_line_1);
+    const state_sj_banner_1_icon_group_icon_1 = Flip.getState(sj_banner_1_icon_group_icon_1);
+
+    // 3. Then make your DOM changes
+    // Select the target container
+    // const targetContainer_sj_banner_1_subheader_container = sj_banner_1_subheader_container;
+    const targetContainer_sj_target_container_icon_group = sj_target_container_icon_group;
+    // append the element
+    // targetContainer_sj_banner_1_subheader_container.appendChild(sj_banner_1_icon_group_icon_1);
+    targetContainer_sj_target_container_icon_group.appendChild(sj_banner_1_icon_group_icon_1);
+
+    // Create a timeline variable to hold your animation (don't execute it yet)
     let tl_flip_icon_group = gsap.timeline();
     
-    // Don't add animation if already in target container
-    if (sj_banner_1_icon_group_1.parentElement === sj_target_container_icon_group_contact_section) {
-      console.log("Icon already in target container, skipping FLIP setup");
-      return;
-    }
-    
-    // Capture initial state before any changes
-    let initialState = Flip.getState(sj_banner_1_icon_group_1);
-    
-    // Create a clone to keep in the original position
-    const originalParent = originalElements.get(sj_banner_1_icon_group_1);
-    
-    // Move to target container in contact section
-    sj_target_container_icon_group_contact_section.appendChild(sj_banner_1_icon_group_1);
-    
-    // Add the FLIP animation to the timeline
+    // 4. Finally, animate from the initial state to the new state
+    // in this case, i'm also adding it to the tl_flip_icon_group timeline
     tl_flip_icon_group.add(
-      Flip.from(initialState, {
-        duration: 1,
+      Flip.from(state_sj_banner_1_icon_group_icon_1, {
+        duration: 5,
         ease: "power1.inOut",
         absolute: true
       })
-    );
-    
-    // Create ScrollTrigger for the FLIP animation
-    scrollTriggers.flipIconGroup = ScrollTrigger.create({
-      trigger: document.querySelector(".small_joys_home") || document.body, // Using the body class as trigger or fallback to body
-      start: "top 0%",
-      end: "bottom 100%",
+    )
+
+    // elements for scrolltrigger
+    let ap_grid_container_sj_process_section_1 = document.querySelector(".ap_grid_container.sj_process_section_1");
+
+    // create scrolltrigger fo icon group flip
+    ScrollTrigger.create({
+      trigger: small_joys_home,
+      start:"top 0%",
+      end:"bottom 100%",
       // markers: true,
       ease: "power1.in",
+      // on enter, on leave, on enter back, on leave back
+      // toggleActions:"play none none reverse",
       animation: tl_flip_icon_group,
-      scrub: true,
-      onUpdate: (self) => {
-        // Track progress for debugging
-        // console.log("Progress:", self.progress.toFixed(2));
-      },
-      onEnter: () => {
-        console.log("ENTER flip icon animation");
-        animationActive = true;
-      },
-      onLeave: () => {
-        console.log("LEAVE flip icon animation");
-      },
-      onEnterBack: () => {
-        console.log("ENTER BACK flip icon animation");
-        animationActive = true;
-      },
-      onLeaveBack: () => {
-        console.log("LEAVE BACK flip icon animation");
-        
-        // When scrolling all the way back up, return to original position
-        if (sj_banner_1_icon_group_1.parentElement !== originalElements.get(sj_banner_1_icon_group_1)) {
-          const originalParent = originalElements.get(sj_banner_1_icon_group_1);
-          if (originalParent) {
-            console.log("Returning icon to original parent");
-            animationActive = false;
-            
-            const currentState = Flip.getState(sj_banner_1_icon_group_1);
-            originalParent.appendChild(sj_banner_1_icon_group_1);
-            
-            Flip.from(currentState, {
-              duration: 0.5,
-              ease: "power1.out",
-              absolute: true,
-              onComplete: () => {
-                // Kill current ScrollTrigger to avoid conflicts
-                if (scrollTriggers.flipIconGroup) {
-                  scrollTriggers.flipIconGroup.kill();
-                  scrollTriggers.flipIconGroup = null;
-                }
-                
-                // Re-initialize the animation with a slight delay
-                setTimeout(() => {
-                  if (!scrollTriggers.flipIconGroup) {
-                    initFlipIconAnimation();
-                  }
-                }, 100);
-              }
-            });
-          }
-        }
-      }
-    });
+      scrub: true
+    })
   }
 
   function initLogoToNavAnimation() {
@@ -220,14 +183,14 @@ function small_joys_home() {
 
   // Kill only specific animations and reset specific elements
   function killFlipIconAnimation() {
-    // Kill ScrollTrigger
-    if (scrollTriggers.flipIconGroup) {
-      scrollTriggers.flipIconGroup.kill();
-      scrollTriggers.flipIconGroup = null;
+    // Kill ScrollTriggers
+    if (scrollTriggers.initFlipIconAnimation) {
+      scrollTriggers.initFlipIconAnimation.kill();
+      scrollTriggers.initFlipIconAnimation = null;
     }
     
     // Reset element to original position
-    let sj_banner_1_icon_group_1 = document.querySelector("#sj_banner_icon_group");
+    let sj_banner_1_icon_group_1 = document.querySelector("#w-node-_0b70cb18-2388-89ef-fff0-75b7f977beda-c738a86b");
     if (sj_banner_1_icon_group_1 && originalElements.has(sj_banner_1_icon_group_1)) {
       const originalParent = originalElements.get(sj_banner_1_icon_group_1);
       if (originalParent && sj_banner_1_icon_group_1.parentElement !== originalParent) {
@@ -244,13 +207,12 @@ function small_joys_home() {
 
   // This function only kills and resets the flip icon animation
   function resetFlipIconOnly() {
-    killFlipIconAnimation();
+    // killFlipIconAnimation();
   }
 
   // Make functions available globally for debugging
   window.killFlipIconAnimation = killFlipIconAnimation;
   window.resetFlipIconOnly = resetFlipIconOnly;
-  window.reInitFlipAnimation = initFlipIconAnimation; // Add for manual re-init if needed
 
   // Debounce function for resize events
   function debounce(func) {
@@ -271,21 +233,6 @@ function small_joys_home() {
   window.addEventListener("load", function (event) {
     init();
   });
-
-  // Additional scroll event listener to help with edge cases
-  window.addEventListener("scroll", debounce(function() {
-    // Check if we're at the top of the page and animation should be active
-    if (window.scrollY <= 10 && !animationActive) {
-      console.log("Near top of page, checking if animation needs reset");
-      const iconGroup = document.querySelector("#sj_banner_icon_group");
-      const originalParent = originalElements.get(iconGroup);
-      
-      if (iconGroup && originalParent && iconGroup.parentElement === originalParent && !scrollTriggers.flipIconGroup) {
-        console.log("Reinitializing flip animation");
-        initFlipIconAnimation();
-      }
-    }
-  }));
 }
 
 // Only run the code if we're on the correct page

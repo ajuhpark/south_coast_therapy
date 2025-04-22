@@ -1,12 +1,12 @@
-/** SJ Home */
+/** SJ Home 041925*/
 
 import "../src/styles/style.css";
 // import { gsap } from "gsap";
 // import { GSDevTools } from "gsap/GSDevTools"; 
-import sj_menu from './sj_menu.js'
+import sj_menu from '../lib/sj_menu.js'
 sj_menu()
 
-import colorModeToggle from './color_mode_toggle.js'
+import colorModeToggle from '../lib/color_mode_toggle.js'
 
 // Register ALL plugins
 // gsap.registerPlugin(ScrollTrigger, GSDevTools); 
@@ -21,8 +21,6 @@ function small_joys_home() {
   
   // Store references to elements and their original parents
   let originalElements = new Map();
-  // Store original style properties for elements being animated
-  let originalStyles = new Map();
 
   function init() {
     console.log("small_joys_home init function is working");
@@ -93,7 +91,7 @@ function small_joys_home() {
     // elements for scrolltrigger
     let ap_grid_container_sj_process_section_1 = document.querySelector(".ap_grid_container.sj_process_section_1");
 
-    // create scrolltrigger fo icon group flip
+    // create scrolltrigger for icon group flip
     ScrollTrigger.create({
       trigger: ap_grid_container_sj_process_section_1,
       start:"top 100%",
@@ -112,56 +110,8 @@ function small_joys_home() {
     let sj_banner_1_header_text_container_target = document.querySelector(".sj_banner_1_header_text_container_target")
     // console.log("sj_banner_1_header_text_container_target:", sj_banner_1_header_text_container_target);
 
-    // 2. Get the initial state BEFORE any DOM changes
-    // const state_sj_banner_1_header_text_group_container = Flip.getState(sj_banner_1_header_text_group_container);
-
-    // 3. Then make your DOM changes
-    // Select the target container
-    // const targetContainer_sj_banner_1_header_text_container_target = sj_banner_1_header_text_container_target;
-    // append the element
-    // targetContainer_sj_banner_1_header_text_container_target.appendChild(sj_banner_1_header_text_group_container);
-
-    // Create a timeline variable to hold your animation (don't execute it yet)
-    // let tl_flip_logo = gsap.timeline();
-    
-    // 4. Finally, animate from the initial state to the new state
-    // in this case, i'm also adding it to the tl_flip_icon_group timeline
-    // tl_flip_logo.add(
-    //   Flip.from(state_sj_banner_1_header_text_group_container, {
-    //     duration: 5,
-    //     ease: "power1.inOut",
-    //     // absolute: true
-    //   })
-    // )
-
-    // // elements for scrolltrigger
-    // let ap_grid_container_sj_process_section_1 = document.querySelector(".ap_grid_container.sj_process_section_1");
-
-    // create scrolltrigger for the logo flip
-    // ScrollTrigger.create({
-    //   trigger: ap_grid_container_sj_process_section_1,
-    //   start:"top 100%",
-    //   end:"top 0%",
-    //   // markers: true,
-    //   ease: "none",
-    //   // on enter, on leave, on enter back, on leave back
-    //   // toggleActions:"play none none reverse",
-    //   animation: tl_flip_logo,
-    //   scrub: true
-    // })
-
     // Getting logo text to be smaller. declaring the variable here.
-    let sj_banner_1_header_text = document.querySelectorAll(".sj_banner_1_header_text");
-    
-    // Store original font size and line height if not already stored
-    if (!originalStyles.has('sj_banner_1_header_text')) {
-      // Get computed styles of first element to use as reference
-      const computedStyle = window.getComputedStyle(sj_banner_1_header_text[0]);
-      originalStyles.set('sj_banner_1_header_text', {
-        fontSize: computedStyle.fontSize,
-        lineHeight: computedStyle.lineHeight
-      });
-    }
+    let sj_banner_1_header_text = document.querySelectorAll(".sj_banner_1_header_text")
 
     // creating the gsap tween to make text size smaller
     let tween_smaller_sj_banner_1_header_text = gsap.to(sj_banner_1_header_text, {
@@ -172,15 +122,7 @@ function small_joys_home() {
     })
 
     // Getting logo text gap to be smaller. declaring the variable here.
-    let sj_banner_1_header_text_wrapper = document.querySelector(".sj_banner_1_header_text_wrapper");
-    
-    // Store original row gap if not already stored
-    if (!originalStyles.has('sj_banner_1_header_text_wrapper')) {
-      const computedStyle = window.getComputedStyle(sj_banner_1_header_text_wrapper);
-      originalStyles.set('sj_banner_1_header_text_wrapper', {
-        rowGap: computedStyle.rowGap
-      });
-    }
+    let sj_banner_1_header_text_wrapper = document.querySelector(".sj_banner_1_header_text_wrapper")
 
     // creating the gsap tween to make gap betwen text smaller for logo
     let tween_gap_sj_banner_1_header_text = gsap.to(sj_banner_1_header_text_wrapper, {
@@ -200,7 +142,11 @@ function small_joys_home() {
       .add(tween_gap_sj_banner_1_header_text, "<")
 
     // create scrolltrigger for logo going to nav
-    ScrollTrigger.create({
+    // At the top of your small_joys_home function, add:
+    let flipIconGroupScrollTrigger;
+
+    // Then when creating the ScrollTrigger:
+    flipIconGroupScrollTrigger = ScrollTrigger.create({
       trigger: ap_grid_container_sj_process_section_1,
       start:"top 100%",
       end:"top 0%",
@@ -209,43 +155,15 @@ function small_joys_home() {
       // on enter, on leave, on enter back, on leave back
       // toggleActions:"play none none reverse",
       animation: tl_logo_to_nav,
-      scrub: true
+      scrub: true,
+      // scrub: 0,
+      invalidateOnRefresh: true,  // Handle dimension changes properly
+      fastScrollEnd: true,  // Improves behavior during fast scrolling
+      // pin: true
+      pinType: "fixed"
     })
 
-    // Getting button to be visible.
-    let sj_1_button_1_sticky_nav = document.querySelector("#sj_1_button_1_sticky_nav");
     
-    // Store original opacity if not already stored
-    if (!originalStyles.has('sj_1_button_1_sticky_nav') && sj_1_button_1_sticky_nav) {
-      const computedStyle = window.getComputedStyle(sj_1_button_1_sticky_nav);
-      originalStyles.set('sj_1_button_1_sticky_nav', {
-        opacity: computedStyle.opacity
-      });
-    }
-    
-    // trigger variable
-    let sj_grid_container_nav_1_sticky_nav = document.querySelector(".sj_grid_container.nav_1.sticky_nav");
-    // console.log("sj_grid_container_nav_1_sticky_nav:", sj_grid_container_nav_1_sticky_nav);
-
-    // creating the gsap tween to make button appear in sticky nav
-    let tween_sj_1_button_1_sticky_nav = gsap.from(sj_1_button_1_sticky_nav, {
-      // yPercent: "110",
-      opacity:"0",
-      duration:1
-    })
-
-    // create scrolltrigger for button to appear in sticky nav
-    ScrollTrigger.create({
-      trigger: sj_grid_container_nav_1_sticky_nav,
-      start:"top 0%",
-      end:"top 100px",
-      // markers: true,
-      // ease: "power1.in",
-      // on enter, on leave, on enter back, on leave back
-      toggleActions:"play none none reverse",
-      animation: tween_sj_1_button_1_sticky_nav,
-      // scrub: true
-    })
   }
 
   // we're trying to make it responsive.
@@ -261,50 +179,14 @@ function small_joys_home() {
     originalElements.forEach((originalParent, element) => {
       if (element && originalParent && element.parentElement !== originalParent) {
         originalParent.appendChild(element);
+        
+        // Reset any inline styles that might have been applied by GSAP
+        gsap.set(element, { clearProps: "all" });
       }
     });
     
-    // Reset original styles for header text elements
-    if (originalStyles.has('sj_banner_1_header_text')) {
-      const styles = originalStyles.get('sj_banner_1_header_text');
-      const elements = document.querySelectorAll(".sj_banner_1_header_text");
-      elements.forEach(el => {
-        gsap.set(el, {
-          fontSize: styles.fontSize,
-          lineHeight: styles.lineHeight,
-          clearProps: "transform,opacity"
-        });
-      });
-    }
-    
-    // Reset original styles for text wrapper
-    if (originalStyles.has('sj_banner_1_header_text_wrapper')) {
-      const styles = originalStyles.get('sj_banner_1_header_text_wrapper');
-      const element = document.querySelector(".sj_banner_1_header_text_wrapper");
-      if (element) {
-        gsap.set(element, {
-          rowGap: styles.rowGap,
-          clearProps: "transform,opacity"
-        });
-      }
-    }
-    
-    // Reset original styles for button
-    if (originalStyles.has('sj_1_button_1_sticky_nav')) {
-      const styles = originalStyles.get('sj_1_button_1_sticky_nav');
-      const element = document.querySelector("#sj_1_button_1_sticky_nav");
-      if (element) {
-        gsap.set(element, {
-          opacity: styles.opacity,
-          clearProps: "transform"
-        });
-      }
-    }
-    
-    // Reset any other properties that might be animated
-    gsap.set("*", { clearProps: "transform,opacity" });
-    
     // Now reinitialize with elements in their starting positions
+    // Small delay to ensure DOM is updated before re-initialization
     setTimeout(() => {
       init();
     }, 50);
