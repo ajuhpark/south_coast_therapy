@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "yarn build-script-1 & yarn build-script-2 & yarn build-script-3 & yarn build-script-4 & yarn build-script-5 & yarn build-script-6 & yarn build-script-7 & yarn build-script-8 & yarn build-script-9 & yarn build-script-10 & yarn build-script-11 & yarn build-script-12 & yarn build-script-13 & yarn build-script-14 & yarn build-script-15 & yarn build-script-16 & yarn build-script-17 & yarn build-script-18 & yarn build-script-19 & yarn build-script-20",
+    "build": "yarn build-script-1 & yarn build-script-2 & yarn build-script-3 & yarn build-script-4 & yarn build-script-5 & yarn build-script-6 & yarn build-script-7 & yarn build-script-8 & yarn build-script-9 & yarn build-script-10 & yarn build-script-11 & yarn build-script-12 & yarn build-script-13 & yarn build-script-14 & yarn build-script-15 & yarn build-script-16 & yarn build-script-17 & yarn build-script-18 & yarn build-script-19 & yarn build-script-20 & yarn build-script-21",
     "build-script-1": "vite build --config 1.vite.config.js",
     "build-script-2": "vite build --config 2.vite.config.js",
     "build-script-3": "vite build --config 3.vite.config.js",
@@ -37,6 +37,7 @@
     "build-script-18": "vite build --config 18.vite.config.js",
     "build-script-19": "vite build --config 19.vite.config.js",
     "build-script-20": "vite build --config 20.vite.config.js",
+    "build-script-21": "vite build --config 21.vite.config.js",
     "preview": "vite preview",
     "clean": "rimraf -rf dist",
     "lint:fix": "eslint ./src --ext .js,.jsx --fix"
