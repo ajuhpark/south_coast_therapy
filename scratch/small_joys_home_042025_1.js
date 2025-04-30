@@ -1,4 +1,8 @@
 /** SJ Home */
+/**
+ * Responsiveness doesn't work
+ * animation is still jittery.
+ */
 
 import "../src/styles/style.css";
 // import { gsap } from "gsap";
@@ -57,7 +61,7 @@ function small_joys_home() {
     let sj_target_container_icon_group = document.querySelector(".sj_target_container_icon_group")
 
     // 1. Select the element to move
-    let sj_banner_1_icon_group_icon_1 = document.querySelector("#w-node-_0b70cb18-2388-89ef-fff0-75b7f977beda-c738a86b")
+    let sj_banner_1_icon_group_icon_1 = document.querySelector("#sj_banner_icon_group")
     // console.log("sj_banner_1_icon_group_icon_1:", sj_banner_1_icon_group_icon_1);
     
     // Store original parent for reset purposes if not already stored

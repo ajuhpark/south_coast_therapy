@@ -1,6 +1,10 @@
 /** SJ Home */
 /** This one has the flip animation working from one location to the next. 
  * It goes in the bottom right of the banner smoothly.
+ * Update 1:
+ * I added a scrolltrigger to it but it made it jittery so i commented it out.
+ * Now I just put the animation there. It doesn't look super smooth but just wanted
+ * to see the animation go from top to bottom.
 */
 
 import "../src/styles/style.css";
@@ -68,8 +72,9 @@ function small_joys_home() {
     
     // Select the target container
     // const targetContainer_ap_grid_1_sj_process_section_1 = ap_grid_1_sj_process_section_1;
-    const targetContainer_sj_banner_1_subheader_container = sj_banner_1_subheader_container;
+    // const targetContainer_sj_banner_1_subheader_container = sj_banner_1_subheader_container;
     // const targetContainer_ap_grid_container_sj_process_section_1 = ap_grid_container_sj_process_section_1;
+    let targetContainer = document.querySelector("#sj_target_container_icon_group_contact_section");
 
     // Save the original state before the move
     // const state = Flip.getState(iconGroup);
@@ -96,14 +101,47 @@ function small_joys_home() {
 
     // 2. Then make your DOM changes
     // targetContainer_sj_banner_1_subheader_container.appendChild(sj_banner_1_header_text_line_1);
-    targetContainer_sj_banner_1_subheader_container.appendChild(sj_banner_1_icon_group_icon_1);
+    targetContainer.appendChild(sj_banner_1_icon_group_icon_1);
 
     // 3. Finally, animate from the initial state to the new state
-    Flip.from(state, {
-      duration: 5,
-      ease: "power1.inOut",
-      absolute: true
-    });
+    // Flip.from(state, {
+    //   duration: 5,
+    //   ease: "power1.inOut",
+    //   absolute: true
+    // });
+
+    let tl_flip_icon_group = gsap.timeline();
+    
+    // 4. Finally, animate from the initial state to the new state
+    // in this case, i'm also adding it to the tl_flip_icon_group timeline
+    tl_flip_icon_group.add(
+      Flip.from(state, {
+        duration: 30,
+        ease: "power1.inOut",
+        absolute: true
+      })
+    )
+
+    // create scrolltrigger fo icon group flip
+    // ScrollTrigger.create({
+    //   // trigger: ap_grid_container_sj_process_section_1,
+    //   // start:"top 100%",
+    //   // end:"5% 100%",
+    //   // markers: true,
+    //   // ease: "power1.in",
+    //   // // on enter, on leave, on enter back, on leave back
+    //   // // toggleActions:"play none none reverse",
+    //   // animation: tl_flip_icon_group,
+    //   // scrub: 0.5
+
+    //   trigger: document.querySelector(".small_joys_home") || document.body,
+    //   start: "top 0%",
+    //   end: "bottom 100%",
+    //   scrub: true,  // This scrub connects the scroll position to the tween.
+    //   markers: true,
+    //   animation: tl_flip_icon_group,
+
+    // })
 
     // const element = document.querySelector('#w-node-_0b70cb18-2388-89ef-fff0-75b7f977beda-c738a86b');
     // if (element) {
