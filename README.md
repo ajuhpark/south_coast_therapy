@@ -179,4 +179,29 @@ for some reason other case_study.js file didn't build. 1
     "build-script-9": "vite build --config 9.vite.config.js",
     "build-script-10": "vite build --config 10.vite.config.js",
     "build-script-11": "vite build --config 11.vite.config.js",
-    
+
+
+--
+
+090625
+
+what does this mean?
+
+andrewpark@MacBook-Pro-10 south_coast_therapy % npm run dev
+> vite-javascript-webflow@0.0.1 dev
+> vite
+sh: vite: command not found
+
+This error means that Vite is not installed on your system or not properly set up in your project.
+
+Here's what's happening:
+
+npm run dev is trying to run the "dev" script from your package.json
+That script is calling vite (a development server)
+But your system can't find the vite command
+How to fix it:
+1. Install the project dependencies first:
+
+bash
+npm install
+This will install all the packages listed in your package.json file, including Vite.
