@@ -205,3 +205,13 @@ How to fix it:
 bash
 npm install
 This will install all the packages listed in your package.json file, including Vite.
+
+
+--
+
+
+
+I added this in terminal
+echo "18" > .nvmrc
+
+I deleted yarn.lock and then did yarn install to create a new yarn.lock
