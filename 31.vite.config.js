@@ -15,7 +15,7 @@ module.exports = defineConfig({
     rollupOptions: {
       input: 'lib/example_20.js',
       output: {
-        dir: 'dist/sct_home',
+        dir: 'dist/example_20',
         format: 'es',
         entryFileNames: '[name].js',
         esModule: false,
