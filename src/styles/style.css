@@ -134,4 +134,26 @@
   border: none !important;
 } */
 
+/* scrollbar */
+.scrollable {
+  width: 300px;
+  height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
 
+.scrollable::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 4px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background-color: lightblue;
+  border-radius: 4px;
+}
