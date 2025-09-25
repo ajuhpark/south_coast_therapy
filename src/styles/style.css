@@ -136,36 +136,67 @@
 
 /* scrollbar */
 
-/* Mobile-specific menu overlay fixes */
+/* Mobile menu scrolling fixes */
 .sj_menu_menu-overlay {
-  -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
-  overscroll-behavior: contain; /* Prevents scroll chaining */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh; /* Better mobile viewport */
+  z-index: 9999;
+  overflow: hidden; /* Overlay itself should not scroll */
 }
 
-/* Ensure the menu column is scrollable on mobile */
+/* The actual scrollable container */
 .sj_menu_col-2.menu {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto !important;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+  padding-right: 0; /* Remove any padding that might hide scrollbar */
 }
 
-/* Fix for iOS Safari viewport issues */
+/* Show scrollbar on mobile */
+.sj_menu_col-2.menu::-webkit-scrollbar {
+  width: 8px;
+  display: block;
+}
+
+.sj_menu_col-2.menu::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sj_menu_col-2.menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
+
+.sj_menu_col-2.menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Force scrollbar visibility on mobile */
 @media screen and (max-width: 768px) {
-  .sj_menu_menu-overlay {
-    height: 100vh;
-    height: 100dvh; /* Use dvh for better mobile support */
-    overflow-y: auto;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
+  .sj_menu_col-2.menu {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
   }
 }
 
-/* Prevent elastic scrolling on body when menu is open */
+/* Prevent body scroll when menu is open */
 body.menu-open {
   position: fixed !important;
   overflow: hidden !important;
   width: 100% !important;
   height: 100% !important;
+}
+
+
+/* Temporary debug styles - remove after testing */
+.sj_menu_col-2.menu {
+  border: 2px solid red !important;
+  background: rgba(0, 255, 0, 0.1) !important;
 }
