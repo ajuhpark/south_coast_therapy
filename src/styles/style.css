@@ -155,7 +155,7 @@
   overflow-y: auto !important;
   overflow-x: hidden;
   /* -webkit-overflow-scrolling: touch; */
-  overscroll-behavior: contain;
+  /* overscroll-behavior: contain; */
   padding-right: 0; /* Remove any padding that might hide scrollbar */
 }
 
