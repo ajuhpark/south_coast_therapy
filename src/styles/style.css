@@ -135,25 +135,37 @@
 } */
 
 /* scrollbar */
-.scrollable {
-  width: 300px;
-  height: 200px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border: 1px solid #ccc;
-  padding: 10px;
+
+/* Mobile-specific menu overlay fixes */
+.sj_menu_menu-overlay {
+  -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
+  overscroll-behavior: contain; /* Prevents scroll chaining */
 }
 
-.scrollable::-webkit-scrollbar {
-  width: 8px;
+/* Ensure the menu column is scrollable on mobile */
+.sj_menu_col-2.menu {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
-.scrollable::-webkit-scrollbar-thumb {
-  background-color: blue;
-  border-radius: 4px;
+/* Fix for iOS Safari viewport issues */
+@media screen and (max-width: 768px) {
+  .sj_menu_menu-overlay {
+    height: 100vh;
+    height: 100dvh; /* Use dvh for better mobile support */
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+  }
 }
 
-.scrollable::-webkit-scrollbar-track {
-  background-color: lightblue;
-  border-radius: 4px;
+/* Prevent elastic scrolling on body when menu is open */
+body.menu-open {
+  position: fixed !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  height: 100% !important;
 }
