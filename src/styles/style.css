@@ -186,6 +186,16 @@
   }
 }
 
+/* Smooth scrolling for main document */
+html {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Prevent body scroll when menu is open */
 body.menu-open {
   position: fixed !important;
