@@ -187,12 +187,15 @@
 }
 
 /* Prevent body scroll when menu is open */
-body.menu-open {
+/* body.menu-open {
   position: fixed !important;
   overflow: hidden !important;
   width: 100% !important;
   height: 100% !important;
-}
+} */
+
+
+
 
 
 /* Temporary debug styles - remove after testing 
