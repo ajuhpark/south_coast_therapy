@@ -186,7 +186,9 @@
   }
 }
 
-/* Prevent body scroll when menu is open */
+/* Prevent body scroll when menu is open 
+I removed this and it scrolls better on phone. 
+*/
 /* body.menu-open {
   position: fixed !important;
   overflow: hidden !important;
