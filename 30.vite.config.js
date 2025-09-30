@@ -12,12 +12,14 @@ module.exports = defineConfig({
     }
   },
   build: {
+    cssCodeSplit: false,
     rollupOptions: {
       input: 'lib/sct_home.js',
       output: {
         dir: 'dist/sct_home',
         format: 'es',
         entryFileNames: '[name].js',
+        assetFileNames: '[name].[ext]',
         esModule: false,
         compact: true,
         globals: {
