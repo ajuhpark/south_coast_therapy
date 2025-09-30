@@ -206,3 +206,102 @@ I removed this and it scrolls better on phone.
   background: rgba(0, 255, 0, 0.1) !important;
 }
   */
+
+
+  /* sct gradient */
+
+
+
+.sct_card_gradient-block--sunset .sct_card_gradient-block__gradient {
+  background-image: linear-gradient(
+    120deg, 
+    /* yellow, red, blue 
+    var(--_theme---color_group_2--color-50)
+    var(--_theme---sjs_body_bg), 
+
+    */
+  /* #d5b51b,
+  #FF1361, 
+  #0025d9 */
+  var(--_theme---color_group_2--color-200),
+  var(--_theme---sjs_body_bg),
+  var(--_theme---color_group_3--color-100)
+  );
+}
+
+.sct_card_gradient-block--sunrise .sct_card_gradient-block__gradient {
+  background-image: linear-gradient(
+    120deg, 
+    /*
+    8 shades from dark red to light red
+    */
+    /* #262332, 
+    #580c49, 
+    #801357, 
+    #b8235a, 
+    #eb3e61, 
+    #ff734a,
+    #ff9167, 
+    #e37fa2 */
+    var(--_theme---color_group_3--color-0),
+    var(--_theme---color_group_3--color-50),
+    var(--_theme---sjs_body_bg),
+    var(--_theme---color_group_3--color-50),
+    var(--_theme---color_group_2--color-50),
+    var(--_theme---sjs_body_bg),
+    var(--_theme---color_group_2--color-50),
+    var(--_theme---color_group_2--color-0)
+
+    );
+}
+
+.sct_card_gradient-block--nebula .sct_card_gradient-block__gradient {
+  background:
+    /*
+    colors:
+    light yellow
+    slightly darker yellow
+    purple
+    pink
+    dark pink
+    blue
+    blueish purple
+    */
+    /* radial-gradient(50% 50% at top left, 
+    #aab777, 
+    transparent
+    ),
+    radial-gradient(70% 70% at bottom right, 
+    #8fa04d, 
+    transparent
+    ),
+    radial-gradient(70% 70% at top right, 
+    #640db3, 
+    transparent
+    ),
+    linear-gradient(120deg, 
+    #b857bb, 
+    #8d0093, 
+    #0e27af, 
+    #3523c3
+    ); */
+    radial-gradient(50% 50% at top left, 
+    /* #aab777,  */
+    var(--_theme---color_group_2--color-200),
+    transparent
+    ),
+    radial-gradient(70% 70% at bottom right, 
+    var(--_theme---sjs_body_bg),
+    transparent
+    ),
+    radial-gradient(70% 70% at top right, 
+    var(--_theme---color_group_3--color-200),
+    transparent
+    ),
+    linear-gradient(120deg, 
+    var(--_theme---color_group_3--color-50),
+    var(--_theme---sjs_body_bg),
+    var(--_theme---color_group_2--color-200),
+    var(--_theme---color_group_2--color-400)
+    );
+}
