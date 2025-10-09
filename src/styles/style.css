@@ -223,9 +223,17 @@ I removed this and it scrolls better on phone.
   /* #d5b51b,
   #FF1361, 
   #0025d9 */
+
+  /*
   var(--_theme---color_group_2--color-300),
   var(--_theme---sjs_body_bg),
   var(--_theme---color_group_3--color-200)
+  */
+
+  var(--sct_sky_blue),
+  var(--_theme---sjs_body_bg),
+  var(--sct_sunglow)
+
   );
 }
 
@@ -243,17 +251,26 @@ I removed this and it scrolls better on phone.
     #ff734a,
     #ff9167, 
     #e37fa2 */
+
+    /*
     var(--_theme---color_group_3--color-0),
     var(--_theme---color_group_3--color-50),
     var(--_theme---sjs_body_bg),
     var(--_theme---color_group_3--color-50),
-    /* var(--_theme---color_group_2--color-200), */
     var(--color--purple--100),
     var(--_theme---sjs_body_bg),
-    /* var(--_theme---color_group_2--color-50), */
     var(--color--purple--50),
-    /* var(--_theme---color_group_2--color-0) */
     var(--color--purple--0)
+    */
+
+    var(--_theme---sjs_body_bg),
+    var(--sct_sky_blue),
+    var(--sct_azure),
+    var(--_theme---sjs_body_bg),
+    var(--sct_azure),
+    var(--sct_sky_blue),
+    var(--sct_sunglow),
+    var(--sct_papaya_whip)
 
     );
 }
@@ -287,9 +304,11 @@ I removed this and it scrolls better on phone.
     #8d0093, 
     #0e27af, 
     #3523c3
-    ); */
+    ); 
+    */
+
+    /*
     radial-gradient(50% 50% at top left, 
-    /* #aab777,  */
     var(--_theme---color_group_2--color-200),
     transparent
     ),
@@ -307,4 +326,27 @@ I removed this and it scrolls better on phone.
     var(--_theme---color_group_2--color-200),
     var(--_theme---color_group_2--color-500)
     );
+    */
+
+    radial-gradient(50% 50% at top left, 
+    var(--sct_sky_blue),
+    transparent
+    ),
+    radial-gradient(70% 70% at bottom right, 
+    var(--_theme---sjs_body_bg),
+    transparent
+    ),
+    radial-gradient(70% 70% at top right, 
+    var(--sct_sunglow),
+    transparent
+    ),
+    linear-gradient(120deg, 
+    var(--sct_azure),
+    var(--_theme---sjs_body_bg),
+    var(--sct_papaya_whip),
+    var(--sct_lapis_lazuli)
+    );
+
+
+
 }
