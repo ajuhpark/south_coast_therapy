@@ -230,8 +230,11 @@ I removed this and it scrolls better on phone.
   var(--_theme---color_group_3--color-200)
   */
 
+  /* var(--sct_sky_blue), */
   var(--sct_sky_blue),
+  var(--sct_azure),
   var(--_theme---sjs_body_bg),
+  var(--sct_papaya_whip),
   var(--sct_sunglow)
 
   );
@@ -252,26 +255,29 @@ I removed this and it scrolls better on phone.
     #ff9167, 
     #e37fa2 */
 
-    /*
-    var(--_theme---color_group_3--color-0),
-    var(--_theme---color_group_3--color-50),
-    var(--_theme---sjs_body_bg),
-    var(--_theme---color_group_3--color-50),
-    var(--color--purple--100),
-    var(--_theme---sjs_body_bg),
-    var(--color--purple--50),
-    var(--color--purple--0)
-    */
 
-    var(--_theme---sjs_body_bg),
-    var(--sct_sky_blue),
-    var(--sct_azure),
-    var(--_theme---sjs_body_bg),
-    var(--sct_azure),
-    var(--sct_sky_blue),
     var(--sct_sunglow),
-    var(--sct_papaya_whip)
+    var(--sct_papaya_whip),
+    var(--_theme---sjs_body_bg),
+    var(--_theme---color_group_2--color-200),
+    var(--sct_azure),
+    var(--_theme---sjs_body_bg),
+    var(--sct_papaya_whip),
+    var(--sct_sunglow)
 
+    
+
+    /* var(--_theme---sjs_body_bg), */
+    /*
+    var(--_theme---color_group_2--color-100),
+    var(--_theme---color_group_2--color-200),
+    var(--_theme---sjs_body_bg),
+    var(--_theme---color_group_2--color-200),
+    var(--sct_azure),
+    var(--_theme---sjs_body_bg),
+    var(--sct_papaya_whip),
+    var(--sct_sunglow)
+  */
     );
 }
 
