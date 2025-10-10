@@ -42,11 +42,11 @@
 }
 
 /* Prevent horizontal scroll on mobile */
-html, body {
-  overflow-x: hidden;
-  /* max-width: 100vw; */
-  /* position: relative; */
-}
+/* html, body {
+  overflow-x: hidden; 
+  max-width: 100vw;
+  position: relative;
+} */
 
 
 /* Fix for canvas elements */
