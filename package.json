@@ -16,6 +16,9 @@
   },
   "scripts": {
     "dev": "vite",
+    "record": "node lib/puppeteer_js.js",
+    "record:hq": "node lib/puppeteer_js.js --quality high",
+    "record:frames": "node lib/puppeteer_js.js --frames",
     "build": "yarn build-script-1 & yarn build-script-2 & yarn build-script-3 & yarn build-script-4 & yarn build-script-5 & yarn build-script-6 & yarn build-script-7 & yarn build-script-8 & yarn build-script-9 & yarn build-script-10 & yarn build-script-11 & yarn build-script-12 & yarn build-script-13 & yarn build-script-14 & yarn build-script-15 & yarn build-script-16 & yarn build-script-17 & yarn build-script-18 & yarn build-script-19 & yarn build-script-20 & yarn build-script-21 & yarn build-script-22 & yarn build-script-23 & yarn build-script-24 & yarn build-script-25 & yarn build-script-26 & yarn build-script-27 & yarn build-script-28 & yarn build-script-29 & yarn build-script-30 & yarn build-script-31 & yarn build-script-32 & yarn build-script-33 & yarn build-script-34 & wait",
     "build-script-1": "vite build --config 1.vite.config.js",
     "build-script-2": "vite build --config 2.vite.config.js",
@@ -73,6 +76,8 @@
     "gsap": "^3.12.5",
     "imagesloaded": "^5.0.0",
     "js-cookie": "^3.0.5",
+    "puppeteer": "^24.1.0",
+    "puppeteer-screen-recorder": "^2.1.2",
     "styled-components": "^6.1.19",
     "swiper": "^11.2.10"
   }
