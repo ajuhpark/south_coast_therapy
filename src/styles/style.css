@@ -313,7 +313,6 @@ var(--color--sct_gold--500)
 var(--color--sct_gold--400),
 var(--color--sct_gold--300),
 var(--color--sct_gold--200),
-var(--color--sct_gold--150),
 var(--color--sct_gold--100),
 var(--color--sct_gold--50),
 var(--color--sct_gold--0),
@@ -322,8 +321,6 @@ var(--_theme---sjs_body_bg),
 var(--color--sct_green--0),
 var(--color--sct_green--50),
 var(--color--sct_green--100),
-/* var(--color--sct_green--150), */
-/* var(--color--sct_green--150), */
 var(--color--sct_green--100),
 var(--color--sct_green--50),
 var(--color--sct_green--0),
@@ -332,7 +329,6 @@ var(--_theme---sjs_body_bg),
 var(--color--sct_gold--0),
 var(--color--sct_gold--50),
 var(--color--sct_gold--100),
-var(--color--sct_gold--150),
 var(--color--sct_gold--200),
 var(--color--sct_gold--300),
 var(--color--sct_gold--400)
@@ -395,7 +391,7 @@ var(--color--sct_gold--400)
     */
 
     radial-gradient(50% 50% at top left, 
-    var(--color--sct_green--150),
+    var(--color--sct_green--100),
     transparent
     ),
     radial-gradient(70% 70% at bottom right, 
