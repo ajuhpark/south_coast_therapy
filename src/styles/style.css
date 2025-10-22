@@ -431,10 +431,10 @@ var(--color--sct_gold--400)
 .sct_banner_header_text_1.bigger_text .split-line > div::after {
   content: '';
   position: absolute;
-  bottom: 9px;
+  bottom: 6px;
   left: -0.15em;
   right: -0.15em;
-  height: calc(var(--_responsive---lineheights--font1--h3) - 20px);
+  height: calc(var(--_responsive---lineheights--font1--h3) - 24px);
   background-color: rgba(127, 217, 240, 0.9);
   pointer-events: none;
   z-index: -1;
