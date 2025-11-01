@@ -438,8 +438,8 @@ var(--color--sct_gold--400)
   height: calc(var(--_responsive---lineheights--font1--h3) - 24px);
   /* background-color: rgba(127, 217, 240, 0.9); */
   /* background-color: rgba(248, 221, 67, 0.9); */
-  background-color: #FDECD0;
-    /* background-color:pink; */
+  /* background-color: #FDECD0; */
+    background-color:pink;
   pointer-events: none;
   z-index: -1;
 }

@@ -413,23 +413,33 @@ var(--color--sct_gold--400)
 
 }
 
-/* Text decoration fix for SplitText elements */
-.sct_banner_header_text_1.bigger_text {
+/* Text decoration - works with or without SplitText */
+.sct_text_highlighter_deco {
   text-align: center;
+  z-index: 0;
+  position: relative; /* For inline usage */
+  display: inline; /* Maintain inline behavior for spans */
 }
 
-.sct_banner_header_text_1.bigger_text .split-line {
+.sct_text_highlighter_deco .split-line {
   position: relative;
   display: block;
   text-align: center;
 }
 
-.sct_banner_header_text_1.bigger_text .split-line > div {
+.sct_text_highlighter_deco .split-line > div,
+.sct_text_highlighter_deco > div {
   position: relative;
 }
 
-.sct_banner_header_text_1.bigger_text .split-line > div::after,
-.sct_banner_header_text_1.bigger_text .sct_text_decoration_word > div::after {
+/* Highlighter for SplitText and child divs */
+.sct_text_highlighter_deco .split-line > div::after,
+.sct_text_highlighter_deco .sct_text_decoration_word > div::after,
+.sct_text_highlighter_deco > div::after,
+/* Highlighter for inline usage (span with text directly inside) */
+span.sct_text_highlighter_deco::after,
+em.sct_text_highlighter_deco::after,
+strong.sct_text_highlighter_deco::after {
   content: '';
   position: absolute;
   bottom: 6px;
@@ -439,14 +449,17 @@ var(--color--sct_gold--400)
   /* background-color: rgba(127, 217, 240, 0.9); */
   /* background-color: rgba(248, 221, 67, 0.9); */
   background-color: #FDECD0;
-    /* background-color:pink; */
   pointer-events: none;
   z-index: -1;
 }
 
 @media (min-width: 762px) and (max-width: 991px) {
-  .sct_banner_header_text_1.bigger_text .split-line > div::after,
-  .sct_banner_header_text_1.bigger_text .sct_text_decoration_word > div::after {
+  .sct_text_highlighter_deco .split-line > div::after,
+  .sct_text_highlighter_deco .sct_text_decoration_word > div::after,
+  .sct_text_highlighter_deco > div::after,
+  span.sct_text_highlighter_deco::after,
+  em.sct_text_highlighter_deco::after,
+  strong.sct_text_highlighter_deco::after {
     content: '';
     position: absolute;
     bottom: 4px;
@@ -461,8 +474,12 @@ var(--color--sct_gold--400)
 }
 
 @media (max-width: 767px) {
-  .sct_banner_header_text_1.bigger_text .split-line > div::after,
-  .sct_banner_header_text_1.bigger_text .sct_text_decoration_word > div::after {
+  .sct_text_highlighter_deco .split-line > div::after,
+  .sct_text_highlighter_deco .sct_text_decoration_word > div::after,
+  .sct_text_highlighter_deco > div::after,
+  span.sct_text_highlighter_deco::after,
+  em.sct_text_highlighter_deco::after,
+  strong.sct_text_highlighter_deco::after {
     content: '';
     position: absolute;
     bottom: 4px;
